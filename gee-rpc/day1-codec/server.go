@@ -3,7 +3,7 @@ package easyrpc
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Nuyoahch/easy-rpc/codec"
+	"github.com/Nuyoahch/geerpc/codec"
 	"io"
 	"log"
 	"net"

@@ -3,8 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	easyrpc "github.com/Nuyoahch/easy-rpc"
-	"github.com/Nuyoahch/easy-rpc/codec"
+	geerpc "github.com/Nuyoahch/geerpc"
+	"github.com/Nuyoahch/geerpc/codec"
 	"log"
 	"net"
 	"time"
@@ -18,7 +18,7 @@ func startServer(addr chan string) {
 	}
 	log.Println("start rpc server on", l.Addr())
 	addr <- l.Addr().String()
-	easyrpc.Accept(l)
+	geerpc.Accept(l)
 }
 
 func main() {
@@ -32,7 +32,7 @@ func main() {
 
 	time.Sleep(time.Second)
 	// send options
-	_ = json.NewEncoder(conn).Encode(easyrpc.DefaultOption)
+	_ = json.NewEncoder(conn).Encode(geerpc.DefaultOption)
 	cc := codec.NewGobCodec(conn)
 	// send request & receive response
 	for i := 0; i < 5; i++ {
